@@ -1,14 +1,40 @@
 import { useState } from 'react'
+import { services } from '../data/siteData'
 
-const DEPARTMENT_OPTIONS = ['Sales', 'Support', 'Projects', 'Automation']
 const RECIPIENT_EMAIL = 'aricssoindia@gmail.com'
 
 const emptyForm = {
   name: '',
   email: '',
   phone: '',
-  department: 'Sales',
+  service: '',
   message: '',
+}
+
+function buildEmailBody({ name, email, phone, service, message }) {
+  return [
+    'Hello Aricsso India Team,',
+    '',
+    'A new inquiry has been submitted through the website contact form.',
+    '',
+    '----------------------------------------',
+    'CONTACT DETAILS',
+    '----------------------------------------',
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Phone: ${phone}`,
+    `Service Required: ${service || 'Not selected'}`,
+    '',
+    '----------------------------------------',
+    'MESSAGE',
+    '----------------------------------------',
+    message,
+    '',
+    '----------------------------------------',
+    '',
+    'Regards,',
+    name,
+  ].join('\n')
 }
 
 function validateForm(form) {
@@ -26,14 +52,14 @@ function validateForm(form) {
   }
 
   if (!trimmedPhone) errors.phone = 'Please enter your phone number.'
-  if (!form.department) errors.department = 'Please choose a department.'
+  if (!form.service) errors.service = 'Please choose a service.'
   if (!trimmedMessage) errors.message = 'Please enter your message.'
 
   return errors
 }
 
-export default function ContactForm() {
-  const [form, setForm] = useState(emptyForm)
+export default function ContactForm({ defaultService = '' }) {
+  const [form, setForm] = useState({ ...emptyForm, service: defaultService })
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitState, setSubmitState] = useState({ type: 'idle', message: '' })
@@ -73,18 +99,16 @@ export default function ContactForm() {
     const trimmedEmail = form.email.trim()
     const trimmedPhone = form.phone.trim()
     const trimmedMessage = form.message.trim()
-    const department = form.department
+    const selectedService = form.service
 
-    const subject = `New Website Inquiry - ${department}`
-    const body = [
-      `Name: ${trimmedName}`,
-      `Email: ${trimmedEmail}`,
-      `Phone: ${trimmedPhone}`,
-      `Department: ${department}`,
-      '',
-      'Message:',
-      trimmedMessage,
-    ].join('\n')
+    const subject = `New Website Inquiry - ${selectedService}`
+    const body = buildEmailBody({
+      name: trimmedName,
+      email: trimmedEmail,
+      phone: trimmedPhone,
+      service: selectedService,
+      message: trimmedMessage,
+    })
 
     // Gmail compose accepts the recipient, subject and body through query params.
     const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
@@ -102,7 +126,7 @@ export default function ContactForm() {
       return
     }
 
-    setForm(emptyForm)
+    setForm({ ...emptyForm, service: defaultService })
     setSubmitState({
       type: 'success',
       message:
@@ -161,26 +185,30 @@ export default function ContactForm() {
             autoComplete="tel"
           />
 
-          <label className="block text-sm text-brand-body" htmlFor="contact-department">
-            <span className="mb-2 block font-semibold text-brand-dark">Department *</span>
+          <label className="block text-sm text-brand-body" htmlFor="contact-service">
+            <span className="mb-2 block font-semibold text-brand-dark">
+              Service Required *
+            </span>
             <select
-              id="contact-department"
-              name="department"
-              value={form.department}
+              id="contact-service"
+              name="service"
+              value={form.service}
               onChange={handleChange}
-              aria-invalid={errors.department ? 'true' : 'false'}
+              aria-invalid={errors.service ? 'true' : 'false'}
               className={`relative z-10 w-full appearance-none rounded-xl border bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition focus:border-brand-teal focus:ring-4 focus:ring-cyan-100 ${
-                errors.department ? 'border-red-400' : 'border-slate-200'
+                errors.service ? 'border-red-400' : 'border-slate-200'
               }`}
             >
-              {DEPARTMENT_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
+              <option value="">Select a service</option>
+              {services.map((service) => (
+                <option key={service.id} value={service.title}>
+                  {service.title}
                 </option>
               ))}
+              <option value="Other">Other</option>
             </select>
-            {errors.department ? (
-              <span className="mt-2 block text-xs text-red-600">{errors.department}</span>
+            {errors.service ? (
+              <span className="mt-2 block text-xs text-red-600">{errors.service}</span>
             ) : null}
           </label>
         </div>
