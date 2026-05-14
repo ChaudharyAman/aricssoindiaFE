@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
+import { useState } from 'react'
 import { company, services } from '../data/siteData'
 
 const emptyForm = {
@@ -10,23 +11,29 @@ const emptyForm = {
   message: '',
 }
 
+const EMAILJS_SERVICE_ID = 'service_nt2q16d'
+const EMAILJS_TEMPLATE_ID = 'template_xanyz9q'
+const EMAILJS_PUBLIC_KEY = '3WmmzXr8NhO3Cw8MG'
+
 export default function ContactForm({ defaultService = '' }) {
   const [form, setForm] = useState({ ...emptyForm, service: defaultService })
   const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
-  const [isRedirecting, setIsRedirecting] = useState(false)
-  const isRedirectingRef = useRef(false)
+  const [submitState, setSubmitState] = useState({ type: 'idle', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
     setErrors((current) => ({ ...current, [name]: '' }))
+    if (submitState.type !== 'idle') {
+      setSubmitState({ type: 'idle', message: '' })
+    }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
-    if (isRedirectingRef.current) {
+    if (isSubmitting) {
       return
     }
 
@@ -44,29 +51,48 @@ export default function ContactForm({ defaultService = '' }) {
     setErrors(nextErrors)
 
     if (Object.keys(nextErrors).length > 0) {
-      setSubmitted(false)
+      setSubmitState({ type: 'idle', message: '' })
       return
     }
 
-    const whatsappNumber = company.phone1.replace(/\D/g, '')
-    const lines = [
-      'Hello Aricsso India, I would like to request a consultation.',
-      '',
-      `Full Name: ${trimmedName}`,
-      `Phone Number: ${trimmedPhone}`,
-      `Email Address: ${trimmedEmail || 'Not provided'}`,
-      `Company Name: ${form.company.trim() || 'Not provided'}`,
-      `Service Required: ${form.service || 'Not selected'}`,
-      `Message: ${form.message.trim() || 'Not provided'}`,
-    ]
+    const templateParams = {
+      name: trimmedName,
+      from_name: trimmedName,
+      phone: trimmedPhone,
+      email: trimmedEmail || 'Not provided',
+      from_email: trimmedEmail || 'Not provided',
+      reply_to: trimmedEmail,
+      company: form.company.trim() || 'Not provided',
+      service: form.service || 'Not selected',
+      message: form.message.trim() || 'Not provided',
+      to_email: company.email1,
+      alternate_email: company.email2,
+    }
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`
+    setIsSubmitting(true)
 
-    isRedirectingRef.current = true
-    setIsRedirecting(true)
-    setSubmitted(true)
-    setForm({ ...emptyForm, service: defaultService })
-    window.location.assign(whatsappUrl)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY,
+      )
+
+      setForm({ ...emptyForm, service: defaultService })
+      setSubmitState({
+        type: 'success',
+        message: 'Your consultation request has been sent successfully.',
+      })
+    } catch (error) {
+      console.error('EmailJS send failed:', error)
+      setSubmitState({
+        type: 'error',
+        message: 'We could not send your request right now. Please try again shortly.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -159,15 +185,21 @@ export default function ContactForm({ defaultService = '' }) {
 
         <button
           type="submit"
-          disabled={isRedirecting}
+          disabled={isSubmitting}
           className="inline-flex w-full justify-center rounded-xl bg-brand-teal px-7 py-3 font-heading font-semibold text-white shadow-lg shadow-cyan-900/10 transition hover:bg-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
         >
-          Send Message
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
 
-        {submitted ? (
+        {submitState.type === 'success' ? (
           <p className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
-            Your message is ready in WhatsApp for sending.
+            {submitState.message}
+          </p>
+        ) : null}
+
+        {submitState.type === 'error' ? (
+          <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {submitState.message}
           </p>
         ) : null}
       </form>
