@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ChevronDown, Menu, X } from 'lucide-react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { company, services } from '../data/siteData'
 
 const navLinks = [
@@ -19,10 +19,13 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false)
+  const desktopServicesRef = useRef(null)
+  const isServicesActive = location.pathname.startsWith('/services')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -37,6 +40,32 @@ export default function Navbar() {
       document.body.style.overflow = ''
     }
   }, [mobileOpen])
+
+  useEffect(() => {
+    if (!desktopServicesOpen) {
+      return undefined
+    }
+
+    const onPointerDown = (event) => {
+      if (!desktopServicesRef.current?.contains(event.target)) {
+        setDesktopServicesOpen(false)
+      }
+    }
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setDesktopServicesOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [desktopServicesOpen])
 
   const closeMobileMenu = () => {
     setMobileOpen(false)
@@ -60,40 +89,51 @@ export default function Navbar() {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => setDesktopServicesOpen(true)}
-                onMouseLeave={() => setDesktopServicesOpen(false)}
-                onFocusCapture={() => setDesktopServicesOpen(true)}
+                ref={desktopServicesRef}
                 onBlurCapture={(event) => {
                   if (!event.currentTarget.contains(event.relatedTarget)) {
                     setDesktopServicesOpen(false)
                   }
                 }}
               >
-                <NavLink
-                  to={item.path}
-                  onClick={() => setDesktopServicesOpen(false)}
-                  className={({ isActive }) =>
-                    `inline-flex items-center gap-2 border-b-2 pb-1 font-heading text-lg font-semibold transition ${
-                      isActive
-                        ? 'border-brand-teal text-brand-teal'
-                        : 'border-transparent text-brand-body hover:border-brand-teal hover:text-brand-teal'
-                    }`
-                  }
+                <button
+                  type="button"
+                  onClick={() => setDesktopServicesOpen((current) => !current)}
+                  aria-expanded={desktopServicesOpen}
+                  aria-controls="desktop-services-menu"
+                  aria-label={`${desktopServicesOpen ? 'Close' : 'Open'} Services menu`}
+                  className={`inline-flex items-center gap-1 border-b-2 pb-1 font-heading text-lg font-semibold transition ${
+                    isServicesActive || desktopServicesOpen
+                      ? 'border-brand-teal text-brand-teal'
+                      : 'border-transparent text-brand-body hover:border-brand-teal hover:text-brand-teal'
+                  }`}
                 >
-                  {item.label}
-                  <ChevronDown
-                    size={16}
-                    className={desktopServicesOpen ? 'rotate-180 transition' : 'transition'}
-                  />
-                </NavLink>
+                  <span className="leading-none">
+                    {item.label}
+                  </span>
+                  <span className="inline-flex h-6 w-6 items-center justify-center text-current transition">
+                    <ChevronDown
+                      size={16}
+                      className={desktopServicesOpen ? 'rotate-180 transition' : 'transition'}
+                    />
+                  </span>
+                </button>
                 <div className="absolute left-0 top-full w-[22rem] pt-3">
                   <div
+                    id="desktop-services-menu"
                     className={`rounded-[1.25rem] border border-brand-border bg-white p-3 shadow-card transition duration-200 ${
                       desktopServicesOpen
                         ? 'pointer-events-auto translate-y-0 opacity-100'
                         : 'pointer-events-none -translate-y-1 opacity-0'
                     }`}
                   >
+                    <Link
+                      to={item.path}
+                      onClick={() => setDesktopServicesOpen(false)}
+                      className="block rounded-xl px-4 py-3 text-sm font-semibold text-brand-teal transition hover:bg-brand-teal-50"
+                    >
+                      All Services
+                    </Link>
                     {item.dropdown.map((link) => (
                       <Link
                         key={link.path}

@@ -28,7 +28,7 @@ const icons = {
 }
 
 export default function Services() {
-  const [openId, setOpenId] = useState(services[0].id)
+  const [openId, setOpenId] = useState('')
 
   return (
     <>
@@ -66,14 +66,11 @@ export default function Services() {
             {services.map((service) => {
               const Icon = icons[service.icon] || Droplets
               const isOpen = openId === service.id
+              const panelId = `${service.id}-panel`
 
               return (
                 <article key={service.id} className="card overflow-hidden">
-                  <button
-                    type="button"
-                    onClick={() => setOpenId(isOpen ? '' : service.id)}
-                    className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left md:px-8"
-                  >
+                  <div className="flex items-center justify-between gap-6 px-6 py-6 md:px-8">
                     <div className="flex items-start gap-4">
                       <div className="icon-circle shrink-0">
                         <Icon size={20} />
@@ -87,18 +84,26 @@ export default function Services() {
                         </p>
                       </div>
                     </div>
-                    <ChevronDown
-                      size={22}
-                      className={
-                        isOpen
-                          ? 'shrink-0 rotate-180 text-brand-teal transition'
-                          : 'shrink-0 text-brand-teal transition'
-                      }
-                    />
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => setOpenId(isOpen ? '' : service.id)}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${service.title}`}
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-border bg-white text-brand-teal transition hover:border-brand-teal hover:bg-brand-teal-50"
+                    >
+                      <ChevronDown
+                        size={22}
+                        className={isOpen ? 'rotate-180 transition' : 'transition'}
+                      />
+                    </button>
+                  </div>
 
                   {isOpen ? (
-                    <div className="border-t border-brand-border px-6 py-8 md:px-8">
+                    <div
+                      id={panelId}
+                      className="border-t border-brand-border px-6 py-8 md:px-8"
+                    >
                       <p className="max-w-5xl text-base leading-8 text-brand-body">
                         {service.fullDesc}
                       </p>
