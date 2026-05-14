@@ -19,6 +19,49 @@ export const company = {
 
 export const services = [
   {
+    id: 'automation-scada',
+    icon: 'Cpu',
+    title: 'Automation, Wireless & SCADA',
+    shortDesc:
+      'Microprocessor-based automation with wireless connectivity and full SCADA supervisory control for utilities and critical infrastructure.',
+    fullDesc:
+      'Aricsso India specialises in process automation, turnkey instrumentation and SCADA software. Our systems use microprocessor-based technology with wireless sensor integration to deliver real-time control visibility for pump houses, valves, tanks and field assets.',
+    features: [
+      'Process Automation Systems',
+      'Turnkey Instrumentation Projects',
+      'SCADA Software Integration',
+      'Wireless Sensor Networks',
+      'Electric Actuator Valve control',
+      'Ultrasonic Sensor integration',
+      'Real-time data to management',
+    ],
+    cpd: {
+      control: [
+        'Process automation systems',
+        'Wireless sensor networks',
+        'SCADA supervisory control',
+      ],
+      protection: [
+        'System health monitoring',
+        'Field fault visibility',
+        'Alarm escalation workflows',
+      ],
+      data: [
+        'Real-time field status',
+        'Pump and valve operating state',
+        'Wireless sensor feedback',
+        'Management dashboard visibility',
+      ],
+    },
+    color: 'slate',
+    suitableFor: [
+      'Industrial facilities',
+      'Government assets',
+      'Hospitals',
+      'Large campuses',
+    ],
+  },
+  {
     id: 'water-management',
     icon: 'Droplets',
     title: 'Water Management System',
@@ -259,7 +302,7 @@ export const portfolioSites = [
     highlight: true,
   },
   {
-    name: 'Member of Parliament Flats',
+    name: 'MP Duplex Flats, North Avenue',
     location: 'New Delhi',
     type: 'Pump House Automation & Water Management',
   },
@@ -293,13 +336,43 @@ export const portfolioSites = [
     location: 'New Delhi',
     type: 'Pump House Automation & Water Management',
   },
+  {
+    name: 'National Archives of India',
+    location: 'New Delhi',
+    type: 'Pump House Automation & Water Management',
+  },
+  {
+    name: 'National Museum',
+    location: 'New Delhi',
+    type: 'Pump House Automation & Water Management',
+  },
+  {
+    name: 'MAMC Hospital',
+    location: 'New Delhi',
+    type: 'Pump House Automation & Water Management',
+  },
+  {
+    name: 'Dhansa, Najafgarh',
+    location: 'New Delhi',
+    type: 'Storm Water Pump House Automation',
+  },
+  {
+    name: 'Sarai Kale Khan',
+    location: 'New Delhi',
+    type: 'Storm Water / Underpass Pump House Automation',
+  },
+  {
+    name: 'Badarpur Border',
+    location: 'New Delhi',
+    type: 'Storm Water / Underpass Pump House Automation',
+  },
 ]
 
 export const stats = [
   { value: 2019, label: 'Established', suffix: '' },
-  { value: 8, label: 'Major Sites', suffix: '+' },
-  { value: 6, label: 'Service Domains', suffix: '' },
-  { value: 100, label: 'Uptime Guaranteed', suffix: '%' },
+  { value: 14, label: 'Major Sites', suffix: '+' },
+  { value: 7, label: 'Service Domains', suffix: '' },
+  { value: 10, label: 'Work Orders Completed', suffix: '+' },
 ]
 
 export const playground = [
@@ -356,6 +429,7 @@ export const workOrders = [
     customer: 'Ganpati InfraPower',
     orderDate: '05-Dec-19',
     completion: '22-Feb-21',
+    orderNumber: 'GIPL/Civil/SS/02',
   },
   {
     id: 2,
@@ -363,6 +437,7 @@ export const workOrders = [
     customer: 'Ganpati InfraPower',
     orderDate: '12-Jan-20',
     completion: '17-Sep-21',
+    orderNumber: 'GIPL/Civil/SS/05',
   },
   {
     id: 3,
@@ -370,6 +445,7 @@ export const workOrders = [
     customer: 'Ganpati InfraPower',
     orderDate: '05-Dec-19',
     completion: '22-Feb-21',
+    orderNumber: 'GIPL/Elect/SS/05',
   },
   {
     id: 4,
@@ -377,6 +453,7 @@ export const workOrders = [
     customer: 'Ganpati InfraPower',
     orderDate: '12-Jan-20',
     completion: '17-Sep-21',
+    orderNumber: 'GIPL/Elect/SS/07',
   },
   {
     id: 5,
@@ -384,6 +461,7 @@ export const workOrders = [
     customer: 'TBEA Energy India',
     orderDate: '20-Dec-20',
     completion: '31-Mar-21',
+    orderNumber: 'TBEA/Gr213/PSI/98',
   },
   {
     id: 6,
@@ -391,6 +469,7 @@ export const workOrders = [
     customer: 'TBEA Energy India',
     orderDate: '12-Feb-21',
     completion: '22-Jun-21',
+    orderNumber: 'TBEA/Gr213/PSI/102',
   },
   {
     id: 7,
@@ -398,6 +477,7 @@ export const workOrders = [
     customer: 'TBEA Energy India',
     orderDate: '12-Feb-21',
     completion: '10-Aug-21',
+    orderNumber: 'TBEA/Gr213/PSI/109',
   },
   {
     id: 8,
@@ -405,6 +485,7 @@ export const workOrders = [
     customer: 'TBEA Energy India',
     orderDate: '24-Mar-21',
     completion: '20-Sep-21',
+    orderNumber: 'TBEA/Gr242/PSI/28',
   },
   {
     id: 9,
@@ -412,6 +493,7 @@ export const workOrders = [
     customer: 'TBEA Energy India',
     orderDate: '24-Mar-21',
     completion: '09-Nov-21',
+    orderNumber: 'TBEA/Gr242/PSI/29',
   },
   {
     id: 10,
@@ -419,6 +501,7 @@ export const workOrders = [
     customer: 'KEC International',
     orderDate: '22-May-22',
     completion: '20-Oct-22',
+    orderNumber: 'KEC/EPC12/22-23/23a',
   },
 ]
 
@@ -441,9 +524,9 @@ export const scadaReferences = [
 ]
 
 export const barGraphLevels = [
-  { label: 'Tank 1', value: 70, tone: 'bg-sky-400' },
-  { label: 'Tank 2', value: 81, tone: 'bg-sky-300' },
-  { label: 'Tank 3', value: 3, tone: 'bg-red-400' },
-  { label: 'Tank 4', value: 4, tone: 'bg-amber-400' },
-  { label: 'Tank 5', value: 5, tone: 'bg-amber-300' },
+  { label: 'OBH OH', value: 100, tone: 'bg-teal-500' },
+  { label: 'OH1', value: 100, tone: 'bg-teal-400' },
+  { label: 'Deen', value: 100, tone: 'bg-teal-400' },
+  { label: 'Pathology', value: 100, tone: 'bg-teal-400' },
+  { label: 'UGT', value: 75, tone: 'bg-sky-400' },
 ]

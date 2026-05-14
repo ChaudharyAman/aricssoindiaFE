@@ -1,7 +1,12 @@
 import PageHero from '../components/PageHero'
 import PageMeta from '../components/PageMeta'
 import WorkOrdersTable from '../components/WorkOrdersTable'
-import { portfolioSites, workOrders } from '../data/siteData'
+import {
+  barGraphLevels,
+  portfolioSites,
+  scadaReferences,
+  workOrders,
+} from '../data/siteData'
 
 export default function Portfolio() {
   const featuredProject = portfolioSites[0]
@@ -93,6 +98,21 @@ export default function Portfolio() {
                 controls, BTC ON status and graphical level indicators that help
                 teams respond quickly and consistently.
               </p>
+              <div className="mt-8 space-y-4">
+                {scadaReferences.map((reference) => (
+                  <div
+                    key={reference.title}
+                    className="rounded-[1.25rem] border border-brand-teal/15 bg-white/75 p-5"
+                  >
+                    <h3 className="font-heading text-2xl font-bold text-brand-dark">
+                      {reference.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-brand-body">
+                      {reference.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="rounded-[1.25rem] border border-brand-teal/20 bg-white p-6 shadow-card">
@@ -100,17 +120,30 @@ export default function Portfolio() {
                 <p className="border-b border-brand-teal/20 pb-3 font-heading text-xl font-bold">
                   ARICSSO INDIA - LEVEL DISPLAY
                 </p>
-                <div className="mt-4 space-y-4">
-                  <div className="grid grid-cols-3 gap-4">
-                    <MockMeter label="OHT-1" value="100%" bars={4} />
-                    <MockMeter label="OHT-2" value="75%" bars={3} />
-                    <MockMeter label="UGT-1" value="50%" bars={2} />
-                  </div>
+                <div className="mt-5 space-y-5">
+                  {barGraphLevels.map((tank) => (
+                    <div key={tank.label}>
+                      <div className="mb-2 flex items-center justify-between gap-4">
+                        <span className="font-heading text-base font-semibold text-brand-dark">
+                          {tank.label}
+                        </span>
+                        <span className="text-xs font-semibold tracking-[0.18em] text-brand-muted">
+                          {tank.value}%
+                        </span>
+                      </div>
+                      <div className="h-3 overflow-hidden rounded-full bg-white">
+                        <div
+                          className={`h-full rounded-full ${tank.tone}`}
+                          style={{ width: `${tank.value}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="rounded-lg border border-brand-teal/20 bg-white p-3">
+                    <div className="rounded-lg border border-brand-teal/20 bg-white p-3 text-center font-heading font-semibold">
                       BTC ON
                     </div>
-                    <div className="rounded-lg border border-brand-teal/20 bg-white p-3">
+                    <div className="rounded-lg border border-brand-teal/20 bg-white p-3 text-center font-heading font-semibold">
                       HL / LL Indicators
                     </div>
                   </div>
@@ -132,24 +165,5 @@ export default function Portfolio() {
         </section>
       </main>
     </>
-  )
-}
-
-function MockMeter({ label, value, bars }) {
-  return (
-    <div className="rounded-lg border border-brand-teal/20 bg-white p-3">
-      <div className="mb-3 flex gap-1">
-        {[1, 2, 3, 4].map((bar) => (
-          <span
-            key={bar}
-            className={`h-8 w-full rounded-sm ${
-              bar <= bars ? 'bg-brand-teal' : 'bg-brand-teal-100'
-            }`}
-          />
-        ))}
-      </div>
-      <p className="text-xs text-brand-muted">{label}</p>
-      <p className="mt-1 font-heading text-lg font-bold text-brand-dark">{value}</p>
-    </div>
   )
 }

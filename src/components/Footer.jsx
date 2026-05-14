@@ -81,7 +81,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <p>(c) 2024 {company.name}. All rights reserved.</p>
+          <p>(c) {new Date().getFullYear()} {company.name}. All rights reserved.</p>
           <p>GSTIN: {company.gstin}</p>
         </div>
       </div>

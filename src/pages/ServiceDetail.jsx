@@ -1,6 +1,7 @@
 import {
   CheckCircle2,
   ChevronRight,
+  Cpu,
   Droplets,
   Flame,
   Lightbulb,
@@ -15,6 +16,7 @@ import PageMeta from '../components/PageMeta'
 import { playground, services } from '../data/siteData'
 
 const icons = {
+  Cpu,
   Droplets,
   Waves,
   Lightbulb,

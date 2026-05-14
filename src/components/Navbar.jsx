@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ChevronDown, Mail, Menu, Phone, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import { company, services } from '../data/siteData'
 
@@ -49,22 +49,9 @@ export default function Navbar() {
         scrolled ? 'shadow-sm' : ''
       }`}
     >
-      <div className="hidden border-b border-brand-border bg-brand-teal-50 py-1.5 md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 text-sm text-brand-body lg:px-8">
-          <span className="inline-flex items-center gap-2">
-            <Phone size={14} className="text-brand-teal" />
-            0124-10786669 | +91-9999525101
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <Mail size={14} className="text-brand-teal" />
-            info@aricssoindia.co.in
-          </span>
-        </div>
-      </div>
-
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        <Link to="/" className="flex shrink-0 items-center">
-          <img src="/icon.png" alt="Aricsso India" className="h-16 w-auto sm:h-20" />
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-0 lg:px-8">
+        <Link to="/" className="m-0 flex shrink-0 items-center p-0">
+          <img src="/icon.png" alt="Aricsso India" className="h-24 w-auto sm:h-28" />
         </Link>
 
         <div className="hidden items-center gap-6 lg:flex">

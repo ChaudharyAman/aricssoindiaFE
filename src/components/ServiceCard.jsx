@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  Cpu,
   Droplets,
   Flame,
   Lightbulb,
@@ -10,6 +11,7 @@ import {
 import { Link } from 'react-router-dom'
 
 const icons = {
+  Cpu,
   Droplets,
   Waves,
   Lightbulb,
@@ -19,6 +21,7 @@ const icons = {
 }
 
 const tints = {
+  slate: 'bg-slate-100 text-slate-700',
   teal: 'bg-brand-teal-100 text-brand-teal',
   blue: 'bg-sky-100 text-sky-700',
   yellow: 'bg-amber-100 text-amber-700',

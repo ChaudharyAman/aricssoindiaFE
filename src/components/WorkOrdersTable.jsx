@@ -6,6 +6,7 @@ export default function WorkOrdersTable({ orders }) {
           <thead className="bg-brand-teal text-white">
             <tr>
               <th className="px-5 py-4">S.No</th>
+              <th className="px-5 py-4">Work Order No.</th>
               <th className="px-5 py-4">Name of Work</th>
               <th className="px-5 py-4">Customer</th>
               <th className="px-5 py-4">Work Order Date</th>
@@ -21,6 +22,7 @@ export default function WorkOrdersTable({ orders }) {
                 }`}
               >
                 <td className="px-5 py-4">{order.id}</td>
+                <td className="px-5 py-4 font-medium text-brand-dark">{order.orderNumber}</td>
                 <td className="px-5 py-4">{order.work}</td>
                 <td className="px-5 py-4">{order.customer}</td>
                 <td className="px-5 py-4">{order.orderDate}</td>
