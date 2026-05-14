@@ -1,6 +1,5 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo-light.svg'
 import { company, services } from '../data/siteData'
 
 export default function Footer() {
@@ -9,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           <div>
-            <img src={logo} alt="Aricsso India" className="h-14 w-auto" />
+            <img src="/icon.png" alt="Aricsso India" className="h-14 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">
               Smart automation systems for water, power, fire, lighting and smart
               infrastructure with dependable visibility and control.

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ChevronDown, Mail, Menu, Phone, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../assets/logo.svg'
 import { company, services } from '../data/siteData'
 
 const navLinks = [
@@ -65,7 +64,7 @@ export default function Navbar() {
 
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         <Link to="/" className="shrink-0">
-          <img src={logo} alt="Aricsso India" className="h-12 w-auto sm:h-14" />
+          <img src="/icon.png" alt="Aricsso India" className="h-12 w-auto sm:h-14" />
         </Link>
 
         <div className="hidden items-center gap-6 lg:flex">
