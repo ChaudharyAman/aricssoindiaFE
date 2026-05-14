@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #ffffff;
+    color: #4a5568;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #1a2332;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background: rgba(2, 128, 144, 0.16);
+    color: #1a2332;
+  }
+}
+
+@layer components {
+  .section-white {
+    background-color: #ffffff;
+  }
+
+  .section-soft {
+    background-color: #f8fafb;
+  }
+
+  .section-teal {
+    background-color: #f0fafb;
+  }
+
+  .section-pad {
+    @apply px-4 py-20 md:px-8 lg:px-16;
+  }
+
+  .card {
+    @apply rounded-[1.25rem] border bg-white transition-all duration-300 hover:-translate-y-1;
+    border-color: #e2e8f0;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(2, 128, 144, 0.15);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg px-7 py-3 font-heading font-semibold text-white transition-all duration-200;
+    background-color: #028090;
+    box-shadow: 0 2px 8px rgba(2, 128, 144, 0.3);
+  }
+
+  .btn-primary:hover {
+    background-color: #00a3b5;
+    box-shadow: 0 8px 30px rgba(2, 128, 144, 0.15);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-lg border-2 px-7 py-3 font-heading font-semibold transition-all duration-200;
+    border-color: #028090;
+    color: #028090;
+  }
+
+  .btn-outline:hover {
+    background-color: #028090;
+    color: #ffffff;
+  }
+
+  .section-heading {
+    @apply font-heading font-bold;
+    color: #1a2332;
+  }
+
+  .badge {
+    @apply rounded-full px-3 py-1 text-sm font-semibold;
+    background-color: #e0f7fa;
+    color: #028090;
+  }
+
+  .card-accent {
+    @apply border-l-4;
+    border-left-color: #028090;
+  }
+
+  .icon-circle {
+    @apply flex h-12 w-12 items-center justify-center rounded-full;
+    background-color: #e0f7fa;
+    color: #028090;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+  opacity: 0;
+}
