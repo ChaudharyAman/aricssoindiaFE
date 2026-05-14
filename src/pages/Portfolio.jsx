@@ -71,9 +71,6 @@ export default function Portfolio() {
                       {site.name}
                     </h3>
                     <p className="mt-3 text-sm leading-7 text-brand-body">{site.type}</p>
-                    <p className="mt-5 font-heading font-semibold text-brand-teal">
-                      View Details
-                    </p>
                   </div>
                 </div>
               ))}

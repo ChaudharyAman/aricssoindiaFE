@@ -80,7 +80,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-0 lg:px-8">
         <Link to="/" className="m-0 flex shrink-0 items-center p-0">
-          <img src="/icon.png" alt="Aricsso India" className="h-24 w-auto sm:h-28" />
+          <img src="/icon.png" alt="Aricsso India" className="h-20 w-auto sm:h-24" />
         </Link>
 
         <div className="hidden items-center gap-6 lg:flex">
@@ -118,13 +118,18 @@ export default function Navbar() {
                     />
                   </span>
                 </button>
-                <div className="absolute left-0 top-full w-[22rem] pt-3">
+                <div
+                  className={`absolute left-0 top-full w-[22rem] pt-3 ${
+                    desktopServicesOpen ? 'pointer-events-auto' : 'pointer-events-none'
+                  }`}
+                  aria-hidden={!desktopServicesOpen}
+                >
                   <div
                     id="desktop-services-menu"
                     className={`rounded-[1.25rem] border border-brand-border bg-white p-3 shadow-card transition duration-200 ${
                       desktopServicesOpen
-                        ? 'pointer-events-auto translate-y-0 opacity-100'
-                        : 'pointer-events-none -translate-y-1 opacity-0'
+                        ? 'visible translate-y-0 opacity-100'
+                        : 'invisible -translate-y-1 opacity-0'
                     }`}
                   >
                     <Link

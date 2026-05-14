@@ -67,7 +67,7 @@ export default function Contact() {
 
 function ContactInfoCard({ icon: Icon, title, lines }) {
   return (
-    <div className="card p-6">
+    <div className="card-static p-6">
       <div className="icon-circle">
         <Icon size={20} />
       </div>
