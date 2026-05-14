@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import {
+  CheckCircle2,
   ChevronDown,
   ChevronRight,
-  CheckCircle2,
+  Cpu,
   Droplets,
   Flame,
   Lightbulb,
@@ -17,6 +18,7 @@ import PageMeta from '../components/PageMeta'
 import { pumpTypes, services } from '../data/siteData'
 
 const icons = {
+  Cpu,
   Droplets,
   Waves,
   Lightbulb,
@@ -103,8 +105,14 @@ export default function Services() {
                       <CPDBox cpd={service.cpd} />
                       <div className="grid gap-4 md:grid-cols-2">
                         {service.features.map((feature) => (
-                          <div key={feature} className="flex gap-3 rounded-xl border border-brand-border bg-brand-bg-soft p-4">
-                            <CheckCircle2 size={18} className="mt-1 shrink-0 text-brand-teal" />
+                          <div
+                            key={feature}
+                            className="flex gap-3 rounded-xl border border-brand-border bg-brand-bg-soft p-4"
+                          >
+                            <CheckCircle2
+                              size={18}
+                              className="mt-1 shrink-0 text-brand-teal"
+                            />
                             <p className="text-sm leading-7 text-brand-body">{feature}</p>
                           </div>
                         ))}
@@ -128,13 +136,16 @@ export default function Services() {
             </h2>
             <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {pumpTypes.map((group) => (
-                <div key={group.category} className="overflow-hidden rounded-[1.25rem] border border-brand-border bg-white shadow-card">
+                <div
+                  key={group.category}
+                  className="overflow-hidden rounded-[1.25rem] border border-brand-border bg-white shadow-card"
+                >
                   <div className="bg-brand-teal px-5 py-4 font-heading text-xl font-bold text-white">
                     {group.category}
                   </div>
                   <div className="space-y-3 p-5 text-sm leading-7 text-brand-body">
                     {group.items.map((item) => (
-                      <p key={item}>• {item}</p>
+                      <p key={item}>&bull; {item}</p>
                     ))}
                   </div>
                 </div>

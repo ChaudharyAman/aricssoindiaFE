@@ -33,7 +33,7 @@ export default function CPDBox({ cpd }) {
           <div className="space-y-2">
             {cpd[key].map((item) => (
               <p key={item} className={`text-sm leading-7 ${itemClass}`}>
-                • {item}
+                &bull; {item}
               </p>
             ))}
           </div>
