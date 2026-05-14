@@ -1,98 +1,114 @@
-import emailjs from '@emailjs/browser'
 import { useState } from 'react'
-import { company, services } from '../data/siteData'
+
+const DEPARTMENT_OPTIONS = ['Sales', 'Support', 'Projects', 'Automation']
+const RECIPIENT_EMAIL = 'aricssoindia@gmail.com'
 
 const emptyForm = {
   name: '',
-  phone: '',
   email: '',
-  company: '',
-  service: '',
+  phone: '',
+  department: 'Sales',
   message: '',
 }
 
-const EMAILJS_SERVICE_ID = 'service_nt2q16d'
-const EMAILJS_TEMPLATE_ID = 'template_xanyz9q'
-const EMAILJS_PUBLIC_KEY = '3WmmzXr8NhO3Cw8MG'
+function validateForm(form) {
+  const errors = {}
+  const trimmedName = form.name.trim()
+  const trimmedEmail = form.email.trim()
+  const trimmedPhone = form.phone.trim()
+  const trimmedMessage = form.message.trim()
 
-export default function ContactForm({ defaultService = '' }) {
-  const [form, setForm] = useState({ ...emptyForm, service: defaultService })
+  if (!trimmedName) errors.name = 'Please enter your full name.'
+  if (!trimmedEmail) {
+    errors.email = 'Please enter your email address.'
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+    errors.email = 'Please enter a valid email address.'
+  }
+
+  if (!trimmedPhone) errors.phone = 'Please enter your phone number.'
+  if (!form.department) errors.department = 'Please choose a department.'
+  if (!trimmedMessage) errors.message = 'Please enter your message.'
+
+  return errors
+}
+
+export default function ContactForm() {
+  const [form, setForm] = useState(emptyForm)
   const [errors, setErrors] = useState({})
-  const [submitState, setSubmitState] = useState({ type: 'idle', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitState, setSubmitState] = useState({ type: 'idle', message: '' })
 
   const handleChange = (event) => {
     const { name, value } = event.target
+
     setForm((current) => ({ ...current, [name]: value }))
     setErrors((current) => ({ ...current, [name]: '' }))
+
     if (submitState.type !== 'idle') {
       setSubmitState({ type: 'idle', message: '' })
     }
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
 
     if (isSubmitting) {
       return
     }
 
-    const trimmedName = form.name.trim()
-    const trimmedPhone = form.phone.trim()
-    const trimmedEmail = form.email.trim()
-    const nextErrors = {}
-
-    if (!trimmedName) nextErrors.name = 'Name is required.'
-    if (!trimmedPhone) nextErrors.phone = 'Phone number is required.'
-    if (trimmedEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-      nextErrors.email = 'Enter a valid email address.'
-    }
-
+    const nextErrors = validateForm(form)
     setErrors(nextErrors)
 
     if (Object.keys(nextErrors).length > 0) {
-      setSubmitState({ type: 'idle', message: '' })
+      setSubmitState({
+        type: 'error',
+        message: 'Please correct the highlighted fields before continuing.',
+      })
       return
-    }
-
-    const templateParams = {
-      name: trimmedName,
-      from_name: trimmedName,
-      phone: trimmedPhone,
-      email: trimmedEmail || 'Not provided',
-      from_email: trimmedEmail || 'Not provided',
-      reply_to: trimmedEmail,
-      company: form.company.trim() || 'Not provided',
-      service: form.service || 'Not selected',
-      message: form.message.trim() || 'Not provided',
-      to_email: company.email1,
-      alternate_email: company.email2,
     }
 
     setIsSubmitting(true)
 
-    try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_PUBLIC_KEY,
-      )
+    const trimmedName = form.name.trim()
+    const trimmedEmail = form.email.trim()
+    const trimmedPhone = form.phone.trim()
+    const trimmedMessage = form.message.trim()
+    const department = form.department
 
-      setForm({ ...emptyForm, service: defaultService })
-      setSubmitState({
-        type: 'success',
-        message: 'Your consultation request has been sent successfully.',
-      })
-    } catch (error) {
-      console.error('EmailJS send failed:', error)
+    const subject = `New Website Inquiry - ${department}`
+    const body = [
+      `Name: ${trimmedName}`,
+      `Email: ${trimmedEmail}`,
+      `Phone: ${trimmedPhone}`,
+      `Department: ${department}`,
+      '',
+      'Message:',
+      trimmedMessage,
+    ].join('\n')
+
+    // Gmail compose accepts the recipient, subject and body through query params.
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      RECIPIENT_EMAIL,
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    const composeWindow = window.open(gmailComposeUrl, '_blank', 'noopener,noreferrer')
+
+    if (!composeWindow) {
+      setIsSubmitting(false)
       setSubmitState({
         type: 'error',
-        message: 'We could not send your request right now. Please try again shortly.',
+        message: 'Gmail could not be opened. Please allow pop-ups and try again.',
       })
-    } finally {
-      setIsSubmitting(false)
+      return
     }
+
+    setForm(emptyForm)
+    setSubmitState({
+      type: 'success',
+      message:
+        'Gmail compose opened in a new tab. Review the drafted email and send it from your Gmail account.',
+    })
+    setIsSubmitting(false)
   }
 
   return (
@@ -102,93 +118,98 @@ export default function ContactForm({ defaultService = '' }) {
           Request a Consultation
         </h3>
         <p className="mt-2 text-sm leading-7 text-brand-body">
-          Tell us what you want to automate and we&apos;ll help shape the right
-          control, protection and data flow.
+          Fill in your details and we&apos;ll open Gmail in a new tab with a message
+          drafted to {RECIPIENT_EMAIL}.
         </p>
       </div>
 
       <form className="relative z-10 space-y-5" onSubmit={handleSubmit} noValidate>
         <div className="grid gap-5 md:grid-cols-2">
           <Field
-            label="Full Name *"
-            id="consultation-name"
+            id="contact-name"
+            label="Name *"
             name="name"
             type="text"
+            placeholder="Enter your full name"
             value={form.name}
             onChange={handleChange}
             error={errors.name}
             autoComplete="name"
           />
+
           <Field
-            label="Phone Number *"
-            id="consultation-phone"
-            name="phone"
-            type="tel"
-            value={form.phone}
-            onChange={handleChange}
-            error={errors.phone}
-            autoComplete="tel"
-          />
-          <Field
-            label="Email Address"
-            id="consultation-email"
+            id="contact-email"
+            label="Email *"
             name="email"
             type="email"
+            placeholder="Enter your email address"
             value={form.email}
             onChange={handleChange}
             error={errors.email}
             autoComplete="email"
           />
+
           <Field
-            label="Company Name"
-            id="consultation-company"
-            name="company"
-            value={form.company}
+            id="contact-phone"
+            label="Phone Number *"
+            name="phone"
+            type="tel"
+            placeholder="Enter your phone number"
+            value={form.phone}
             onChange={handleChange}
-            autoComplete="organization"
+            error={errors.phone}
+            autoComplete="tel"
           />
+
+          <label className="block text-sm text-brand-body" htmlFor="contact-department">
+            <span className="mb-2 block font-semibold text-brand-dark">Department *</span>
+            <select
+              id="contact-department"
+              name="department"
+              value={form.department}
+              onChange={handleChange}
+              aria-invalid={errors.department ? 'true' : 'false'}
+              className={`relative z-10 w-full appearance-none rounded-xl border bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition focus:border-brand-teal focus:ring-4 focus:ring-cyan-100 ${
+                errors.department ? 'border-red-400' : 'border-slate-200'
+              }`}
+            >
+              {DEPARTMENT_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            {errors.department ? (
+              <span className="mt-2 block text-xs text-red-600">{errors.department}</span>
+            ) : null}
+          </label>
         </div>
 
-        <label className="block text-sm text-brand-body" htmlFor="consultation-service">
-          <span className="mb-2 block font-semibold text-brand-dark">
-            Service Required
-          </span>
-          <select
-            id="consultation-service"
-            name="service"
-            value={form.service}
-            onChange={handleChange}
-            className="relative z-10 w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition focus:border-brand-teal focus:ring-4 focus:ring-cyan-100"
-          >
-            <option value="">Select a service</option>
-            {services.map((service) => (
-              <option key={service.id} value={service.title}>
-                {service.title}
-              </option>
-            ))}
-            <option value="Other">Other</option>
-          </select>
-        </label>
-
-        <label className="block text-sm text-brand-body" htmlFor="consultation-message">
-          <span className="mb-2 block font-semibold text-brand-dark">Message</span>
+        <label className="block text-sm text-brand-body" htmlFor="contact-message">
+          <span className="mb-2 block font-semibold text-brand-dark">Message *</span>
           <textarea
-            id="consultation-message"
+            id="contact-message"
             name="message"
             rows="4"
             value={form.message}
             onChange={handleChange}
-            className="relative z-10 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition focus:border-brand-teal focus:ring-4 focus:ring-cyan-100"
-            placeholder="Share site details, pain points, or desired automation outcomes."
+            aria-invalid={errors.message ? 'true' : 'false'}
+            className={`relative z-10 w-full rounded-xl border bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition focus:border-brand-teal focus:ring-4 focus:ring-cyan-100 ${
+              errors.message ? 'border-red-400' : 'border-slate-200'
+            }`}
+            placeholder="Tell us how we can help you."
           />
+          {errors.message ? (
+            <span className="mt-2 block text-xs text-red-600">{errors.message}</span>
+          ) : null}
         </label>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex w-full justify-center rounded-xl bg-brand-teal px-7 py-3 font-heading font-semibold text-white shadow-lg shadow-cyan-900/10 transition hover:bg-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
+          className="inline-flex w-full justify-center rounded-xl bg-brand-teal px-7 py-3 font-heading font-semibold text-white shadow-lg shadow-cyan-900/10 transition hover:bg-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100 disabled:cursor-wait disabled:opacity-80"
         >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isSubmitting ? 'Opening Gmail...' : 'Send Message'}
         </button>
 
         {submitState.type === 'success' ? (
@@ -207,19 +228,19 @@ export default function ContactForm({ defaultService = '' }) {
   )
 }
 
-function Field({ label, error, ...props }) {
-  const inputId = props.id || props.name
-
+function Field({ id, label, error, ...props }) {
   return (
     <div className="block text-sm text-brand-body">
-      <label className="mb-2 block font-semibold text-brand-dark" htmlFor={inputId}>
+      <label className="mb-2 block font-semibold text-brand-dark" htmlFor={id}>
         {label}
       </label>
       <input
-        {...props}
-        id={inputId}
+        id={id}
         aria-invalid={error ? 'true' : 'false'}
-        className="relative z-10 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-teal focus:ring-4 focus:ring-cyan-100"
+        className={`relative z-10 w-full rounded-xl border bg-white px-4 py-3 text-brand-body shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-teal focus:ring-4 focus:ring-cyan-100 ${
+          error ? 'border-red-400' : 'border-slate-200'
+        }`}
+        {...props}
       />
       {error ? <span className="mt-2 block text-xs text-red-600">{error}</span> : null}
     </div>
