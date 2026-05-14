@@ -23,6 +23,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -70,9 +71,21 @@ export default function Navbar() {
         <div className="hidden items-center gap-6 lg:flex">
           {navLinks.map((item) =>
             item.dropdown ? (
-              <div key={item.label} className="group relative">
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setDesktopServicesOpen(true)}
+                onMouseLeave={() => setDesktopServicesOpen(false)}
+                onFocusCapture={() => setDesktopServicesOpen(true)}
+                onBlurCapture={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setDesktopServicesOpen(false)
+                  }
+                }}
+              >
                 <NavLink
                   to={item.path}
+                  onClick={() => setDesktopServicesOpen(false)}
                   className={({ isActive }) =>
                     `inline-flex items-center gap-2 border-b-2 pb-1 font-heading text-lg font-semibold transition ${
                       isActive
@@ -82,18 +95,30 @@ export default function Navbar() {
                   }
                 >
                   {item.label}
-                  <ChevronDown size={16} />
+                  <ChevronDown
+                    size={16}
+                    className={desktopServicesOpen ? 'rotate-180 transition' : 'transition'}
+                  />
                 </NavLink>
-                <div className="pointer-events-none absolute left-0 top-full mt-4 w-[22rem] rounded-[1.25rem] border border-brand-border bg-white p-3 opacity-0 shadow-card transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                  {item.dropdown.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className="block rounded-xl px-4 py-3 text-sm text-brand-body transition hover:bg-brand-teal-50 hover:text-brand-teal"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <div className="absolute left-0 top-full w-[22rem] pt-3">
+                  <div
+                    className={`rounded-[1.25rem] border border-brand-border bg-white p-3 shadow-card transition duration-200 ${
+                      desktopServicesOpen
+                        ? 'pointer-events-auto translate-y-0 opacity-100'
+                        : 'pointer-events-none -translate-y-1 opacity-0'
+                    }`}
+                  >
+                    {item.dropdown.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        onClick={() => setDesktopServicesOpen(false)}
+                        className="block rounded-xl px-4 py-3 text-sm text-brand-body transition hover:bg-brand-teal-50 hover:text-brand-teal"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
