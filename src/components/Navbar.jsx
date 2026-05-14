@@ -63,8 +63,8 @@ export default function Navbar() {
       </div>
 
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        <Link to="/" className="shrink-0">
-          <img src="/icon.png" alt="Aricsso India" className="h-12 w-auto sm:h-14" />
+        <Link to="/" className="flex shrink-0 items-center">
+          <img src="/icon.png" alt="Aricsso India" className="h-16 w-auto sm:h-20" />
         </Link>
 
         <div className="hidden items-center gap-6 lg:flex">
