@@ -1,4 +1,4 @@
-import { Globe, Mail, MapPin, Phone, Receipt } from 'lucide-react'
+import { Globe, Mail, MapPin, Phone } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
 import PageHero from '../components/PageHero'
@@ -49,11 +49,6 @@ export default function Contact() {
                 icon={Globe}
                 title="Website"
                 lines={[company.website]}
-              />
-              <ContactInfoCard
-                icon={Receipt}
-                title="GSTIN"
-                lines={[company.gstin]}
               />
             </div>
 
