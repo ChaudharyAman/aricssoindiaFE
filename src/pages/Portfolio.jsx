@@ -2,13 +2,15 @@ import PageHero from '../components/PageHero'
 import PageMeta from '../components/PageMeta'
 import WorkOrdersTable from '../components/WorkOrdersTable'
 import {
-  barGraphLevels,
   portfolioSites,
   scadaReferences,
+  serviceImages,
   workOrders,
 } from '../data/siteData'
 
 export default function Portfolio() {
+  const featuredProject = portfolioSites[0]
+
   return (
     <>
       <PageMeta
@@ -52,6 +54,18 @@ export default function Portfolio() {
                   ),
                 )}
               </div>
+              {featuredProject.image && (
+                <div className="mt-8 overflow-hidden rounded-[1rem]">
+                  <img
+                    src={featuredProject.image}
+                    alt={`${featuredProject.name} - Building Water Management System SCADA display`}
+                    className="w-full object-cover"
+                  />
+                  <p className="mt-3 text-xs text-brand-muted">
+                    Lok Nayak Hospital - OPD & Surgical Block Water Management System (Aricsso India x JSB Automation India)
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -109,38 +123,21 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="rounded-[1.25rem] border border-brand-teal/20 bg-white p-6 shadow-card">
-              <div className="rounded-xl border border-brand-teal/30 bg-brand-teal-50 p-5 font-mono text-sm text-brand-dark">
-                <p className="border-b border-brand-teal/20 pb-3 font-heading text-xl font-bold">
-                  ARICSSO INDIA - LEVEL DISPLAY
-                </p>
-                <div className="mt-5 space-y-5">
-                  {barGraphLevels.map((tank) => (
-                    <div key={tank.label}>
-                      <div className="mb-2 flex items-center justify-between gap-4">
-                        <span className="font-heading text-base font-semibold text-brand-dark">
-                          {tank.label}
-                        </span>
-                        <span className="text-xs font-semibold tracking-[0.18em] text-brand-muted">
-                          {tank.value}%
-                        </span>
-                      </div>
-                      <div className="h-3 overflow-hidden rounded-full bg-white">
-                        <div
-                          className={`h-full rounded-full ${tank.tone}`}
-                          style={{ width: `${tank.value}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="rounded-lg border border-brand-teal/20 bg-white p-3 text-center font-heading font-semibold">
-                      BTC ON
-                    </div>
-                    <div className="rounded-lg border border-brand-teal/20 bg-white p-3 text-center font-heading font-semibold">
-                      HL / LL Indicators
-                    </div>
-                  </div>
+            <div className="space-y-6">
+              {/* Tank Level SCADA - real installation screenshot */}
+              <div className="overflow-hidden rounded-[1.25rem] border border-brand-teal/20 shadow-card">
+                <img
+                  src={serviceImages['water-management'].src}
+                  alt={serviceImages['water-management'].alt}
+                  className="w-full object-cover"
+                />
+                <div className="border-t border-brand-teal/10 bg-white px-5 py-3">
+                  <p className="font-heading text-sm font-semibold text-brand-dark">
+                    Tank Level Display
+                  </p>
+                  <p className="mt-1 text-xs text-brand-muted">
+                    OBH OH - OH1 - Deen - Pathology - all at 100% - Main UG Pump House HIGH
+                  </p>
                 </div>
               </div>
             </div>
@@ -161,3 +158,5 @@ export default function Portfolio() {
     </>
   )
 }
+
+

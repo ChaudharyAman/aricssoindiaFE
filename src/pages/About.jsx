@@ -64,7 +64,7 @@ export default function About() {
                 Projects and the SCADA Software. Under the tutelage and support of
                 our mentor we have successfully climbed the ladders of success.
               </p>
-              <p className="mt-6 text-base leading-8 text-brand-body">
+              <p className="mt-4 text-base leading-8 text-brand-body">
                 We are a leading industrial automation and electrical solutions
                 provider delivering advanced automation systems, industrial
                 products, PLC, HMI, SCADA, robotics, motion control, sensors,
@@ -74,7 +74,7 @@ export default function About() {
                 infrastructure equipped with fabrication, machining facility and a
                 quality control department.
               </p>
-              <p className="mt-6 text-base leading-8 text-brand-body">
+              <p className="mt-4 text-base leading-8 text-brand-body">
                 We specialize in supplying globally recognized automation brands
                 and providing complete industrial automation solutions that
                 improve efficiency, productivity, reliability, and operational

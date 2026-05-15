@@ -344,6 +344,7 @@ export const portfolioSites = [
     location: 'New Delhi',
     type: 'Building Water Management System - OPD & Surgical Block Pump / UGT / OHT',
     highlight: true,
+    image: '/images/preview (2).webp',
   },
   {
     name: 'MP Duplex Flats, North Avenue',
@@ -607,6 +608,31 @@ export const scadaReferences = [
   },
 ]
 
+export const serviceImages = {
+  'water-management': {
+    src: '/images/preview (3).webp',
+    alt: 'SCADA Tank Level display - OBH OH, OH1, Deen, Pathology tanks at 100%, Main UG Pump House HIGH',
+    caption: 'Live SCADA tank level display - real installation',
+  },
+  'storm-stp-sewage': {
+    src: '/images/preview (2).webp',
+    alt: 'Building Water Management System at Lok Nayak Hospital New Delhi',
+    caption: 'Lok Nayak Hospital - OPD & Surgical Block Water Management System',
+  },
+  'street-light': {
+    src: '/images/preview (4).webp',
+    alt: 'Street light sensor control - 15M radius zone activation near vehicle',
+    caption:
+      'Light Control & Online Data - sensor activates zone lighting near vehicles',
+  },
+  'smart-dustbin': {
+    src: '/images/preview (1).webp',
+    alt:
+      'Smart dustbin monitoring - Empty, 25% full and 60% full bins with wireless sensors and garbage truck',
+    caption: 'Real-time dustbin fill-level monitoring with wireless sensors',
+  },
+}
+
 export const barGraphLevels = [
   { label: 'OBH OH', value: 100, tone: 'bg-teal-500' },
   { label: 'OH1', value: 100, tone: 'bg-teal-400' },
@@ -617,7 +643,7 @@ export const barGraphLevels = [
 
 export const globalBrands = [
   {
-    category: 'Global Leaders — Most Demanded',
+    category: 'Global Leaders \u2014 Most Demanded',
     brands: [
       'Siemens',
       'ABB',
@@ -645,19 +671,11 @@ export const globalBrands = [
     category: 'Robotics & Motion Control',
     brands: ['FANUC', 'Yaskawa Electric', 'KUKA', 'Danfoss', 'SEW-Eurodrive'],
     description:
-      'Specialists in industrial robotics, servo systems, motion control, and variable frequency drives for demanding automation applications.',
+      'Specialists in industrial robotics, servo systems, motion control, and variable frequency drives.',
   },
   {
     category: 'Sensors, Safety & Instrumentation',
-    brands: [
-      'Keyence',
-      'SICK AG',
-      'IFM Electronic',
-      'Balluff',
-      'Banner Engineering',
-      'Omron',
-      'Panasonic',
-    ],
+    brands: ['Keyence', 'SICK AG', 'IFM Electronic', 'Balluff', 'Banner Engineering'],
     description:
       'Precision sensing, safety systems and instrumentation for industrial measurement, detection and process monitoring.',
   },
@@ -665,13 +683,13 @@ export const globalBrands = [
     category: 'Process Automation & Field Instruments',
     brands: ['Yokogawa Electric', 'Endress+Hauser', 'General Electric'],
     description:
-      'Advanced field instruments including flow meters, pressure transmitters, temperature sensors and level instruments for process control.',
+      'Advanced field instruments including flow meters, pressure transmitters, temperature sensors and level instruments.',
   },
   {
     category: 'Industrial Electrical & Control Components',
     brands: ['Bosch Rexroth', 'Phoenix Contact', 'WEG'],
     description:
-      'Core electrical and control components - drives, contactors, terminals, panels and motor control equipment for industrial systems.',
+      'Core electrical and control components \u2014 drives, contactors, terminals, panels and motor control equipment.',
   },
 ]
 
@@ -707,30 +725,37 @@ export const whyChooseUs = [
   {
     reason: 'Genuine Products',
     detail: 'Only authentic products from globally certified brands.',
+    icon: 'ShieldCheck',
   },
   {
     reason: 'Multi-brand Support',
     detail: 'Single-window access to all major automation brands.',
+    icon: 'Layers',
   },
   {
     reason: 'Fast Delivery',
     detail: 'Prompt supply and on-site deployment across PAN India.',
+    icon: 'Truck',
   },
   {
     reason: 'Technical Expertise',
     detail: 'Experienced engineers for design, installation and commissioning.',
+    icon: 'Wrench',
   },
   {
     reason: 'Competitive Pricing',
     detail: 'Best market price with genuine product guarantee.',
+    icon: 'BadgeCheck',
   },
   {
     reason: 'Customized Engineering Solutions',
-    detail:
-      'Tailored automation solutions designed for your specific site requirements.',
+    detail: 'Tailored automation solutions designed for your specific site.',
+    icon: 'Settings2',
   },
   {
     reason: 'PAN India Service Support',
     detail: 'On-ground service and after-sales support across all states.',
+    icon: 'MapPin',
   },
 ]
+

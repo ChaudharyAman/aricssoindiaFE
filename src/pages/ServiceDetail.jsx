@@ -1,10 +1,12 @@
 import {
+  Bot,
   CheckCircle2,
   ChevronRight,
   Cpu,
   Droplets,
   Flame,
   Lightbulb,
+  Settings2,
   Trash2,
   Waves,
   Zap,
@@ -13,14 +15,16 @@ import { Link, useParams } from 'react-router-dom'
 import CPDBox from '../components/CPDBox'
 import PageHero from '../components/PageHero'
 import PageMeta from '../components/PageMeta'
-import { playground, services } from '../data/siteData'
+import { playground, serviceImages, services } from '../data/siteData'
 
 const icons = {
+  Bot,
   Cpu,
   Droplets,
   Waves,
   Lightbulb,
   Flame,
+  Settings2,
   Trash2,
   Zap,
 }
@@ -75,6 +79,25 @@ export default function ServiceDetail() {
             <CPDBox cpd={service.cpd} />
           </div>
         </section>
+
+        {serviceImages[service.id] && (
+          <section className="section-soft">
+            <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+              <div className="overflow-hidden rounded-[1.5rem] border border-brand-border shadow-card">
+                <img
+                  src={serviceImages[service.id].src}
+                  alt={serviceImages[service.id].alt}
+                  className="w-full object-cover"
+                />
+                <div className="border-t border-brand-border bg-white px-6 py-4">
+                  <p className="text-sm text-brand-muted">
+                    {serviceImages[service.id].caption}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="section-soft">
           <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
