@@ -73,6 +73,15 @@ export default function Navbar() {
     setMobileServicesOpen(false)
   }
 
+  const handleHomeClick = () => {
+    closeMobileMenu()
+    setDesktopServicesOpen(false)
+
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   return (
     <header
       className={`sticky top-0 z-50 bg-white border-b border-brand-border ${
@@ -80,7 +89,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-0 lg:px-8">
-        <Link to="/" className="m-0 flex shrink-0 items-center p-0">
+        <Link to="/" onClick={handleHomeClick} className="m-0 flex shrink-0 items-center p-0">
           <img src="/icon.png" alt="Aricsso India" className="h-20 w-auto sm:h-24" />
         </Link>
 
@@ -157,6 +166,7 @@ export default function Navbar() {
               <NavLink
                 key={item.path}
                 to={item.path}
+                onClick={item.path === '/' ? handleHomeClick : undefined}
                 className={({ isActive }) =>
                   `border-b-2 pb-1 font-heading text-lg font-semibold transition ${
                     isActive
@@ -230,7 +240,7 @@ export default function Navbar() {
                 <NavLink
                   key={item.path}
                   to={item.path}
-                  onClick={closeMobileMenu}
+                  onClick={item.path === '/' ? handleHomeClick : closeMobileMenu}
                   className="block rounded-[1.25rem] border border-brand-border px-4 py-3 font-heading text-lg font-semibold text-brand-dark"
                 >
                   {item.label}

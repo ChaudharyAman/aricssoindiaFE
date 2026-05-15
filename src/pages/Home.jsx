@@ -1,5 +1,14 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  Cpu,
+  FileText,
+  Mail,
+  MapPin,
+  Phone,
+  ShieldCheck,
+} from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CPDBox from '../components/CPDBox'
 import HeroSection from '../components/HeroSection'
@@ -17,6 +26,65 @@ const cpdHighlight = {
     'Power Factors RYB',
   ],
 }
+
+const homepageVisuals = [
+  {
+    id: 'sam1',
+    title: 'Solar Smart Lighting',
+    description:
+      'Wireless concentrator, LoRa communication and remote monitoring for modern street-light infrastructure.',
+    image: '/images/sam1.jfif',
+  },
+  {
+    id: 'sam2',
+    title: 'IoT Street Light Control',
+    description:
+      'Preset scheduling, gateway connectivity and end-application visibility for smart-lighting networks.',
+    image: '/images/sam2.png',
+  },
+  {
+    id: 'sam3',
+    title: 'Industrial Condition Monitoring',
+    description:
+      'Sensor-driven tracking of vibration, current, heat, humidity and air-flow conditions from one system.',
+    image: '/images/sam3.jfif',
+  },
+  {
+    id: 'sam4',
+    title: 'Adaptive Road Illumination',
+    description:
+      'Focused illumination around active road users to improve safety while reducing unnecessary energy usage.',
+    image: '/images/sam4.jfif',
+  },
+]
+
+const infrastructurePoints = [
+  'Smart City Automation Systems',
+  'Water Authority Monitoring SCADA',
+  'Electrical Distribution Infrastructure',
+  'Compliance-based Project Execution',
+]
+
+const infrastructureGallery = [
+  {
+    id: 'aam1',
+    title: 'Embedded Control Layer',
+    description: 'High-reliability control hardware for connected utility networks.',
+    image: '/images/aam1.jfif',
+  },
+  {
+    id: 'aam2',
+    title: 'Electrical Monitoring Interface',
+    description: 'Live panel data and diagnostics for field-ready automation systems.',
+    image: '/images/aam2.jfif',
+  },
+  {
+    id: 'aam3',
+    title: 'Industrial Coordination Point',
+    description: 'Integrated visibility across infrastructure assets and site operations.',
+    image: '/images/aam3.jfif',
+  },
+]
 
 export default function Home() {
   return (
@@ -79,6 +147,52 @@ export default function Home() {
         <section className="section-white">
           <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
             <div className="text-center">
+              <span className="badge">Field Snapshots</span>
+              <h2 className="mt-5 section-heading text-4xl md:text-5xl">
+                Smart Monitoring In Action
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-brand-body">
+                A quick visual view of the kinds of automation, monitoring and
+                connected infrastructure systems Aricsso India works with across
+                lighting, utilities and industrial environments.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-6 md:grid-cols-2">
+              {homepageVisuals.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.06 }}
+                  className="card overflow-hidden p-0"
+                >
+                  <div className="aspect-[16/10] overflow-hidden border-b border-brand-border bg-brand-bg-soft">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="p-7">
+                    <span className="badge">{item.id.toUpperCase()}</span>
+                    <h3 className="mt-4 font-heading text-2xl font-bold text-brand-dark">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-brand-body">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section-white">
+          <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+            <div className="text-center">
               <h2 className="section-heading text-4xl md:text-5xl">Our Services</h2>
               <div className="mx-auto mt-4 h-[3px] w-16 rounded-full bg-brand-teal" />
             </div>
@@ -128,6 +242,144 @@ export default function Home() {
                   {item}
                 </span>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section-white overflow-hidden">
+          <div className="mx-auto max-w-6xl px-4 py-16 lg:px-8">
+            <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+              <div>
+                <span
+                  className="inline-flex rounded-full px-3 py-1 text-sm font-semibold"
+                  style={{ backgroundColor: 'rgba(3, 169, 244, 0.14)', color: '#29b6f6' }}
+                >
+                  Government Infrastructure Expertise
+                </span>
+                <h2 className="mt-4 max-w-3xl font-heading text-3xl font-bold leading-tight text-brand-dark md:text-5xl">
+                  Smart Infrastructure & Utility Automation
+                </h2>
+                <div className="mt-8 space-y-4">
+                  {infrastructurePoints.map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.45, delay: index * 0.08 }}
+                      className="flex items-center gap-4 rounded-[1.25rem] border px-4 py-4"
+                      style={{
+                        borderColor: 'rgba(148, 163, 184, 0.22)',
+                        backgroundColor: '#f8fafc',
+                      }}
+                    >
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
+                        <CheckCircle2 size={20} />
+                      </div>
+                      <p className="font-heading text-lg font-semibold text-brand-dark md:text-xl">
+                        {item}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45 }}
+                  className="group relative overflow-hidden rounded-[1.75rem] border md:col-span-2"
+                  style={{ borderColor: 'rgba(148, 163, 184, 0.18)' }}
+                >
+                  <img
+                    src={infrastructureGallery[0].image}
+                    alt={infrastructureGallery[0].title}
+                    className="h-full min-h-[230px] w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/35 to-transparent p-6">
+                    <h3 className="font-heading text-xl font-bold text-white md:text-2xl">
+                      {infrastructureGallery[0].title}
+                    </h3>
+                    <p className="mt-2 max-w-xs text-sm leading-6 text-slate-200">
+                      {infrastructureGallery[0].description}
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: 0.08 }}
+                  className="rounded-[1.5rem] border p-6"
+                  style={{
+                    borderColor: 'rgba(148, 163, 184, 0.18)',
+                    backgroundColor: '#f8fafc',
+                  }}
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-400">
+                    <FileText size={24} />
+                  </div>
+                  <h3 className="mt-6 font-heading text-2xl font-bold text-brand-dark">
+                    Technical Approvals
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-brand-body">
+                    Engineering drawings, panel logic, SCADA workflows and audit-ready
+                    documentation aligned with infrastructure-grade execution.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: 0.12 }}
+                  className="rounded-[1.5rem] border p-6"
+                  style={{
+                    borderColor: 'rgba(148, 163, 184, 0.18)',
+                    backgroundColor: '#eef7fb',
+                  }}
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-sky-300">
+                    <Cpu size={24} />
+                  </div>
+                  <h3 className="mt-6 font-heading text-2xl font-bold text-brand-dark">
+                    Infrastructure SCADA
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-brand-body">
+                    Enterprise utility analytics, remote alerts and connected monitoring
+                    systems designed for live field decision-making.
+                  </p>
+                </motion.div>
+
+                {infrastructureGallery.slice(1).map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: 0.16 + index * 0.08 }}
+                    className="group relative overflow-hidden rounded-[1.75rem] border"
+                    style={{ borderColor: 'rgba(148, 163, 184, 0.18)' }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full min-h-[230px] w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/35 to-transparent p-6">
+                      <h3 className="font-heading text-xl font-bold text-white md:text-2xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 max-w-xs text-sm leading-6 text-slate-200">
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
