@@ -33,6 +33,7 @@ export default function Footer() {
               <FooterLink to="/">Home</FooterLink>
               <FooterLink to="/about">About</FooterLink>
               <FooterLink to="/services">Services</FooterLink>
+              <FooterLink to="/products">Products</FooterLink>
               <FooterLink to="/portfolio">Portfolio</FooterLink>
               <FooterLink to="/contact">Contact</FooterLink>
             </div>
@@ -62,6 +63,8 @@ export default function Footer() {
                   {company.phone1}
                   <br />
                   {company.phone2}
+                  <br />
+                  {company.phone3}
                 </span>
               </div>
               <div className="flex gap-3">

@@ -1,10 +1,10 @@
 export const company = {
   name: 'Aricsso India',
   tagline: 'Smart Works',
-  fullTagline:
-    'Smart Work:- Building, Water, Light, Industrial, House Hold, Automations',
+  fullTagline: 'Powering Smart Industrial Automation',
   phone1: '+91-9999525101',
   phone2: '0124-10786669',
+  phone3: '+91-9716111152',
   email1: 'info@aricssoindia.co.in',
   email2: 'aricssoindia@gmail.com',
   website: 'www.aricssoindia.co.in',
@@ -13,7 +13,7 @@ export const company = {
   shortAddress:
     'Basement of O 79-A, M3M Smart Word, Sector 89, Gurugram, Haryana',
   gstin: '06BARPK2820C1ZZ',
-  authorizations: ['GIC', 'L&T', 'BCH', 'EXOR'],
+  authorizations: ['GIC', 'BCH', 'EXOR'],
   established: 2019,
 }
 
@@ -59,6 +59,50 @@ export const services = [
       'Government assets',
       'Hospitals',
       'Large campuses',
+    ],
+  },
+  {
+    id: 'substation-power',
+    icon: 'Zap',
+    title: 'Substation & Power Distribution Management',
+    shortDesc:
+      'IoT-based smart protection and monitoring for electrical substations, power distribution systems and MCC panels with digital overload relay integration.',
+    fullDesc:
+      'Aricsso India automates electrical power distribution systems and substations with IoT-based smart starters, digital overload relays and real-time monitoring to protect and manage electrical infrastructure across commercial, industrial and government sites.',
+    features: [
+      'Electricity power distribution system automation',
+      'Substation management system',
+      'IoT based smart starter',
+      'Digital overload relay integration',
+      'Real-time protection monitoring',
+      'Energy and load data dashboard',
+      'MCC panel integration',
+    ],
+    cpd: {
+      control: [
+        'Distribution system control',
+        'Starter control',
+        'Auto / manual switching',
+      ],
+      protection: [
+        'Digital overload relay',
+        'Over / under voltage',
+        'Phase fault',
+        'Phase reversal',
+      ],
+      data: [
+        'Load status per feeder',
+        'Voltage and current',
+        'Energy consumption kWh',
+        'Fault history',
+      ],
+    },
+    color: 'orange',
+    suitableFor: [
+      'Substations',
+      'Industrial plants',
+      'Commercial complexes',
+      'Government buildings',
     ],
   },
   {
@@ -366,12 +410,52 @@ export const portfolioSites = [
     location: 'New Delhi',
     type: 'Storm Water / Underpass Pump House Automation',
   },
+  {
+    name: 'Moolchand Underpass',
+    location: 'New Delhi',
+    type: 'Storm Water / Underpass Pump House Automation',
+  },
+  {
+    name: 'Shastri Bhavan',
+    location: 'New Delhi',
+    type: 'Pump House Automation & Water Management',
+  },
+  {
+    name: 'Janpath Bhawan',
+    location: 'New Delhi',
+    type: 'Pump House Automation & Water Management',
+  },
+  {
+    name: 'PWD Delhi Subways',
+    location: 'New Delhi',
+    type: 'Storm Water / Underpass Pump House Automation',
+  },
+  {
+    name: "CPWD Residential Colony's (Old, New & CRPF)",
+    location: 'Gurugram',
+    type: 'Pump House Automation & Water Management',
+  },
+  {
+    name: 'Avlon',
+    location: 'Bhiwadi',
+    type: 'Industrial Automation',
+  },
+  {
+    name: 'Rohtak Railway Station',
+    location: 'Haryana',
+    type: 'Railway Station Automation',
+  },
+  {
+    name: 'Jind Railway Station',
+    location: 'Haryana',
+    type: 'Railway Station Automation',
+  },
 ]
 
 export const stats = [
   { value: 2019, label: 'Established', suffix: '' },
-  { value: 14, label: 'Major Sites', suffix: '+' },
-  { value: 7, label: 'Service Domains', suffix: '' },
+  { value: 22, label: 'Major Sites', suffix: '+' },
+  { value: 8, label: 'Service Domains', suffix: '' },
   { value: 10, label: 'Work Orders Completed', suffix: '+' },
 ]
 
@@ -503,6 +587,90 @@ export const workOrders = [
     completion: '20-Oct-22',
     orderNumber: 'KEC/EPC12/22-23/23a',
   },
+]
+
+export const globalBrands = [
+  {
+    category: 'Global Leaders (Most Demanded)',
+    brands: [
+      'Siemens',
+      'ABB',
+      'Schneider Electric',
+      'Rockwell Automation',
+      'Honeywell',
+      'Emerson Electric',
+    ],
+  },
+  {
+    category: 'PLC, HMI & Control Systems',
+    brands: [
+      'Mitsubishi Electric',
+      'Omron',
+      'Delta Electronics',
+      'Panasonic',
+      'Fuji Electric',
+    ],
+  },
+  {
+    category: 'Robotics & Motion Control',
+    brands: ['FANUC', 'Yaskawa Electric', 'KUKA', 'Danfoss', 'SEW-Eurodrive'],
+  },
+  {
+    category: 'Sensors, Safety & Instrumentation',
+    brands: [
+      'Keyence',
+      'SICK AG',
+      'IFM Electronic',
+      'Balluff',
+      'Banner Engineering',
+    ],
+  },
+  {
+    category: 'Process Automation & Field Instruments',
+    brands: ['Yokogawa Electric', 'Endress+Hauser', 'General Electric'],
+  },
+  {
+    category: 'Industrial Electrical & Control Components',
+    brands: ['Bosch Rexroth', 'Phoenix Contact', 'WEG'],
+  },
+]
+
+export const products = [
+  'PLC Systems',
+  'HMI Touch Panels',
+  'SCADA Solutions',
+  'Servo Drives & Motion Control',
+  'VFD Systems',
+  'Industrial Robots',
+  'Sensors & Safety Devices',
+  'Instrumentation Products',
+  'Control Panels & MCC Panels',
+  'Industrial Networking',
+  'Industrial IoT Solutions',
+  'Automation Spare Parts',
+]
+
+export const industriesServed = [
+  'Manufacturing',
+  'Oil & Gas',
+  'Pharmaceuticals',
+  'Food & Beverage',
+  'Automotive',
+  'Packaging',
+  'Textile',
+  'Water Treatment',
+  'Infrastructure',
+  'Power Plants',
+]
+
+export const whyChooseUs = [
+  'Genuine Products',
+  'Multi-brand Support',
+  'Fast Delivery',
+  'Technical Expertise',
+  'Competitive Pricing',
+  'Customized Engineering Solutions',
+  'PAN India Service Support',
 ]
 
 export const scadaReferences = [

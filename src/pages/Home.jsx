@@ -63,10 +63,16 @@ export default function Home() {
                 Smart systems built for real-world operations.
               </h2>
               <p className="mt-6 text-base leading-8 text-brand-body">
-                Established in 2019, Aricsso India focuses on automation of pump
-                houses, electric actuator valves, wireless ultrasonic sensors and
-                microprocessor-based systems that give management real-time
-                decision-ready data.
+                Established in 2019, Aricsso India is a leading industrial
+                automation and electrical solutions provider delivering advanced
+                automation systems, industrial products, PLC, HMI, SCADA,
+                robotics, motion control, sensors, instrumentation, and process
+                automation solutions for modern industries.
+              </p>
+              <p className="mt-4 text-base leading-8 text-brand-body">
+                We specialize in supplying globally recognized automation brands
+                and complete engineering solutions that improve efficiency,
+                productivity, reliability, and operational performance.
               </p>
               <Link to="/about" className="btn-outline mt-8 w-fit">
                 Read Our Story
@@ -107,6 +113,11 @@ export default function Home() {
               </h2>
               <p className="mt-4 text-lg text-brand-body">
                 Control - Protection - Real-Time Data
+              </p>
+              <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-body">
+                Building automation Industrial Automation wireless sensors
+                Automation Wireless &amp; SCDMS (Supervisory Control &amp; Data
+                Monitoring Software System)
               </p>
             </div>
             <div className="mt-10">
@@ -200,7 +211,7 @@ export default function Home() {
               <InfoCard
                 icon={Phone}
                 title="Phone"
-                lines={[company.phone2, company.phone1]}
+                lines={[company.phone2, company.phone1, company.phone3]}
               />
               <InfoCard
                 icon={Mail}

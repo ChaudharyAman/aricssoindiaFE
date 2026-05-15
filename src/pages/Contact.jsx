@@ -30,7 +30,7 @@ export default function Contact() {
               <ContactInfoCard
                 icon={Phone}
                 title="Phone"
-                lines={[company.phone2, company.phone1]}
+                lines={[company.phone2, company.phone1, company.phone3]}
               />
               <ContactInfoCard
                 icon={Mail}

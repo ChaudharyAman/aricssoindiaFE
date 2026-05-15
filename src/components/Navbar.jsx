@@ -14,6 +14,7 @@ const navLinks = [
       path: `/services/${service.id}`,
     })),
   },
+  { label: 'Products', path: '/products' },
   { label: 'Portfolio', path: '/portfolio' },
   { label: 'Contact', path: '/contact' },
 ]
@@ -241,6 +242,8 @@ export default function Navbar() {
           <div className="mt-5 rounded-[1.25rem] bg-brand-teal-50 p-4">
             <div className="space-y-2 text-sm text-brand-body">
               <p>{company.phone1}</p>
+              <p>{company.phone2}</p>
+              <p>{company.phone3}</p>
               <p>{company.email1}</p>
             </div>
             <Link to="/contact" onClick={closeMobileMenu} className="btn-primary mt-4">

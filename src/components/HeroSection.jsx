@@ -18,7 +18,7 @@ export default function HeroSection() {
               Intelligent Automation for Modern Infrastructure
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-brand-body">
-              Building - Water - Light - Industrial - Household Automations
+              {company.fullTagline}
             </p>
             <p className="mt-5 max-w-2xl text-base leading-8 text-brand-body">
               Aricsso India delivers automation systems for utilities and critical

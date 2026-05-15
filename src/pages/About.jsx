@@ -65,10 +65,25 @@ export default function About() {
                 our mentor we have successfully climbed the ladders of success.
               </p>
               <p className="mt-6 text-base leading-8 text-brand-body">
-                We specialize in Automation of Pump Houses, Electric Actuator
-                Valves, and Wireless Ultrasonic Sensors - automating Water
-                Management Systems with Microprocessor-based technology that
-                delivers Real Time Data to management.
+                We are a leading industrial automation and electrical solutions
+                provider delivering advanced automation systems, industrial
+                products, PLC, HMI, SCADA, robotics, motion control, sensors,
+                instrumentation, and process automation solutions for modern
+                industries. We design and develop products that meet the
+                requirements of the industry with a state-of-the-art
+                infrastructure equipped with fabrication, machining facility and a
+                quality control department.
+              </p>
+              <p className="mt-6 text-base leading-8 text-brand-body">
+                We specialize in supplying globally recognized automation brands
+                and providing complete industrial automation solutions that
+                improve efficiency, productivity, reliability, and operational
+                performance.
+              </p>
+              <p className="mt-6 text-base leading-8 text-brand-body">
+                Our speciality includes Building automation Industrial Automation
+                wireless sensors Automation Wireless &amp; SCDMS (Supervisory
+                Control &amp; Data Monitoring Software System).
               </p>
             </div>
 
