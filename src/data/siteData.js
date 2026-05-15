@@ -589,90 +589,6 @@ export const workOrders = [
   },
 ]
 
-export const globalBrands = [
-  {
-    category: 'Global Leaders (Most Demanded)',
-    brands: [
-      'Siemens',
-      'ABB',
-      'Schneider Electric',
-      'Rockwell Automation',
-      'Honeywell',
-      'Emerson Electric',
-    ],
-  },
-  {
-    category: 'PLC, HMI & Control Systems',
-    brands: [
-      'Mitsubishi Electric',
-      'Omron',
-      'Delta Electronics',
-      'Panasonic',
-      'Fuji Electric',
-    ],
-  },
-  {
-    category: 'Robotics & Motion Control',
-    brands: ['FANUC', 'Yaskawa Electric', 'KUKA', 'Danfoss', 'SEW-Eurodrive'],
-  },
-  {
-    category: 'Sensors, Safety & Instrumentation',
-    brands: [
-      'Keyence',
-      'SICK AG',
-      'IFM Electronic',
-      'Balluff',
-      'Banner Engineering',
-    ],
-  },
-  {
-    category: 'Process Automation & Field Instruments',
-    brands: ['Yokogawa Electric', 'Endress+Hauser', 'General Electric'],
-  },
-  {
-    category: 'Industrial Electrical & Control Components',
-    brands: ['Bosch Rexroth', 'Phoenix Contact', 'WEG'],
-  },
-]
-
-export const products = [
-  'PLC Systems',
-  'HMI Touch Panels',
-  'SCADA Solutions',
-  'Servo Drives & Motion Control',
-  'VFD Systems',
-  'Industrial Robots',
-  'Sensors & Safety Devices',
-  'Instrumentation Products',
-  'Control Panels & MCC Panels',
-  'Industrial Networking',
-  'Industrial IoT Solutions',
-  'Automation Spare Parts',
-]
-
-export const industriesServed = [
-  'Manufacturing',
-  'Oil & Gas',
-  'Pharmaceuticals',
-  'Food & Beverage',
-  'Automotive',
-  'Packaging',
-  'Textile',
-  'Water Treatment',
-  'Infrastructure',
-  'Power Plants',
-]
-
-export const whyChooseUs = [
-  'Genuine Products',
-  'Multi-brand Support',
-  'Fast Delivery',
-  'Technical Expertise',
-  'Competitive Pricing',
-  'Customized Engineering Solutions',
-  'PAN India Service Support',
-]
-
 export const scadaReferences = [
   {
     title: 'Tank Level Display System',
@@ -697,4 +613,124 @@ export const barGraphLevels = [
   { label: 'Deen', value: 100, tone: 'bg-teal-400' },
   { label: 'Pathology', value: 100, tone: 'bg-teal-400' },
   { label: 'UGT', value: 75, tone: 'bg-sky-400' },
+]
+
+export const globalBrands = [
+  {
+    category: 'Global Leaders — Most Demanded',
+    brands: [
+      'Siemens',
+      'ABB',
+      'Schneider Electric',
+      'Rockwell Automation',
+      'Honeywell',
+      'Emerson Electric',
+    ],
+    description:
+      'The most trusted industrial automation brands worldwide, providing PLCs, SCADA, DCS platforms, industrial IoT, robotics, and AI-powered automation technologies.',
+  },
+  {
+    category: 'PLC, HMI & Control Systems',
+    brands: [
+      'Mitsubishi Electric',
+      'Omron',
+      'Delta Electronics',
+      'Panasonic',
+      'Fuji Electric',
+    ],
+    description:
+      'Industry-leading brands for programmable logic controllers, human-machine interfaces, and control system platforms.',
+  },
+  {
+    category: 'Robotics & Motion Control',
+    brands: ['FANUC', 'Yaskawa Electric', 'KUKA', 'Danfoss', 'SEW-Eurodrive'],
+    description:
+      'Specialists in industrial robotics, servo systems, motion control, and variable frequency drives for demanding automation applications.',
+  },
+  {
+    category: 'Sensors, Safety & Instrumentation',
+    brands: [
+      'Keyence',
+      'SICK AG',
+      'IFM Electronic',
+      'Balluff',
+      'Banner Engineering',
+      'Omron',
+      'Panasonic',
+    ],
+    description:
+      'Precision sensing, safety systems and instrumentation for industrial measurement, detection and process monitoring.',
+  },
+  {
+    category: 'Process Automation & Field Instruments',
+    brands: ['Yokogawa Electric', 'Endress+Hauser', 'General Electric'],
+    description:
+      'Advanced field instruments including flow meters, pressure transmitters, temperature sensors and level instruments for process control.',
+  },
+  {
+    category: 'Industrial Electrical & Control Components',
+    brands: ['Bosch Rexroth', 'Phoenix Contact', 'WEG'],
+    description:
+      'Core electrical and control components - drives, contactors, terminals, panels and motor control equipment for industrial systems.',
+  },
+]
+
+export const products = [
+  { name: 'PLC Systems', icon: 'Cpu' },
+  { name: 'HMI Touch Panels', icon: 'Monitor' },
+  { name: 'SCADA Solutions', icon: 'Activity' },
+  { name: 'Servo Drives & Motion Control', icon: 'Settings2' },
+  { name: 'VFD Systems', icon: 'Zap' },
+  { name: 'Industrial Robots', icon: 'Bot' },
+  { name: 'Sensors & Safety Devices', icon: 'Radio' },
+  { name: 'Instrumentation Products', icon: 'Gauge' },
+  { name: 'Control Panels & MCC Panels', icon: 'LayoutGrid' },
+  { name: 'Industrial Networking', icon: 'Network' },
+  { name: 'Industrial IoT Solutions', icon: 'Wifi' },
+  { name: 'Automation Spare Parts', icon: 'Wrench' },
+]
+
+export const industriesServed = [
+  { name: 'Manufacturing', icon: 'Factory' },
+  { name: 'Oil & Gas', icon: 'Flame' },
+  { name: 'Pharmaceuticals', icon: 'FlaskConical' },
+  { name: 'Food & Beverage', icon: 'UtensilsCrossed' },
+  { name: 'Automotive', icon: 'Car' },
+  { name: 'Packaging', icon: 'Package' },
+  { name: 'Textile', icon: 'Layers' },
+  { name: 'Water Treatment', icon: 'Droplets' },
+  { name: 'Infrastructure', icon: 'Building2' },
+  { name: 'Power Plants', icon: 'Zap' },
+]
+
+export const whyChooseUs = [
+  {
+    reason: 'Genuine Products',
+    detail: 'Only authentic products from globally certified brands.',
+  },
+  {
+    reason: 'Multi-brand Support',
+    detail: 'Single-window access to all major automation brands.',
+  },
+  {
+    reason: 'Fast Delivery',
+    detail: 'Prompt supply and on-site deployment across PAN India.',
+  },
+  {
+    reason: 'Technical Expertise',
+    detail: 'Experienced engineers for design, installation and commissioning.',
+  },
+  {
+    reason: 'Competitive Pricing',
+    detail: 'Best market price with genuine product guarantee.',
+  },
+  {
+    reason: 'Customized Engineering Solutions',
+    detail:
+      'Tailored automation solutions designed for your specific site requirements.',
+  },
+  {
+    reason: 'PAN India Service Support',
+    detail: 'On-ground service and after-sales support across all states.',
+  },
 ]

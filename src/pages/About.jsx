@@ -78,12 +78,8 @@ export default function About() {
                 We specialize in supplying globally recognized automation brands
                 and providing complete industrial automation solutions that
                 improve efficiency, productivity, reliability, and operational
-                performance.
-              </p>
-              <p className="mt-6 text-base leading-8 text-brand-body">
-                Our speciality includes Building automation Industrial Automation
-                wireless sensors Automation Wireless &amp; SCDMS (Supervisory
-                Control &amp; Data Monitoring Software System).
+                performance across manufacturing, government facilities,
+                hospitals, railways and infrastructure sites.
               </p>
             </div>
 

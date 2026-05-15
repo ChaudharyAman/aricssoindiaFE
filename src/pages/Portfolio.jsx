@@ -9,9 +9,6 @@ import {
 } from '../data/siteData'
 
 export default function Portfolio() {
-  const featuredProject = portfolioSites[0]
-  const otherProjects = portfolioSites.slice(1)
-
   return (
     <>
       <PageMeta
@@ -32,7 +29,7 @@ export default function Portfolio() {
             <div className="card card-accent p-8">
               <span className="badge">Featured Installation</span>
               <h2 className="mt-5 section-heading text-4xl md:text-5xl">
-                {featuredProject.name}, {featuredProject.location}
+                Lok Nayak Hospital, New Delhi
               </h2>
               <p className="mt-4 text-lg leading-8 text-brand-body">
                 Building Water Management System - OPD & Surgical Block Pump/UGT/OHT
@@ -62,7 +59,7 @@ export default function Portfolio() {
         <section className="section-white">
           <div className="mx-auto max-w-7xl px-4 pb-20 lg:px-8">
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {otherProjects.map((site) => (
+              {portfolioSites.map((site) => (
                 <div key={site.name} className="card overflow-hidden">
                   <div className="h-[2px] w-full bg-brand-teal" />
                   <div className="p-6">
