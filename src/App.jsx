@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
+import { company } from './data/siteData'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
@@ -20,7 +21,7 @@ function Layout({ children }) {
       {children}
       <Footer />
       <a
-        href="https://wa.me/919999525101?text=Hi%2C%20I%20need%20Water%20Management%20Automation"
+        href={`https://wa.me/${company.whatsapp.replace(/\D/g, '')}?text=Hi%2C%20I%20need%20Water%20Management%20Automation`}
         className="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition hover:scale-110 hover:bg-green-600"
         target="_blank"
         rel="noopener noreferrer"

@@ -5,6 +5,7 @@ export const company = {
   phone1: '+91-9999525101',
   phone2: '0124-10786669',
   phone3: '+91-9716111152',
+  whatsapp: '+91-9716111152',
   email1: 'info@aricssoindia.co.in',
   email2: 'aricssoindia@gmail.com',
   website: 'www.aricssoindia.co.in',
