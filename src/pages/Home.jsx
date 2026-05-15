@@ -176,8 +176,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-7">
-                    <span className="badge">{item.id.toUpperCase()}</span>
-                    <h3 className="mt-4 font-heading text-2xl font-bold text-brand-dark">
+                    <h3 className="font-heading text-2xl font-bold text-brand-dark">
                       {item.title}
                     </h3>
                     <p className="mt-4 text-sm leading-7 text-brand-body">
