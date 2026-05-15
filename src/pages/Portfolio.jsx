@@ -124,19 +124,28 @@ export default function Portfolio() {
             </div>
 
             <div className="space-y-6">
-              {/* Tank Level SCADA - real installation screenshot */}
-              <div className="overflow-hidden rounded-[1.25rem] border border-brand-teal/20 shadow-card">
-                <img
-                  src={serviceImages['water-management'].src}
-                  alt={serviceImages['water-management'].alt}
-                  className="w-full object-cover"
-                />
-                <div className="border-t border-brand-teal/10 bg-white px-5 py-3">
-                  <p className="font-heading text-sm font-semibold text-brand-dark">
+              <div className="card overflow-hidden p-0">
+                <div className="border-b border-brand-border bg-white px-6 py-5">
+                  <span className="badge">Live Installation</span>
+                  <h3 className="mt-4 font-heading text-2xl font-bold text-brand-dark">
                     Tank Level Display
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-brand-body">
+                    Real SCADA installation view showing overhead tanks, valve
+                    status and underground pump house level indicators.
                   </p>
-                  <p className="mt-1 text-xs text-brand-muted">
-                    OBH OH - OH1 - Deen - Pathology - all at 100% - Main UG Pump House HIGH
+                </div>
+                <div className="bg-white p-5">
+                  <div className="overflow-hidden rounded-[1rem] border border-brand-border bg-brand-bg-soft">
+                    <img
+                      src={serviceImages['water-management'].src}
+                      alt={serviceImages['water-management'].alt}
+                      className="w-full object-contain"
+                    />
+                  </div>
+                  <p className="mt-4 text-sm text-brand-muted">
+                    OBH OH - OH1 - Deen - Pathology - all at 100% - Main UG Pump
+                    House HIGH
                   </p>
                 </div>
               </div>
