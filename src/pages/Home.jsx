@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CPDBox from '../components/CPDBox'
+import DeputyCMTag from '../components/DeputyCMTag'
 import HeroSection from '../components/HeroSection'
 import PageMeta from '../components/PageMeta'
 import ServiceCard from '../components/ServiceCard'
@@ -98,6 +99,12 @@ export default function Home() {
       />
 
       <HeroSection />
+
+      <div className="bg-white py-5">
+        <div className="mx-auto flex max-w-7xl justify-center px-4 lg:px-8">
+          <DeputyCMTag />
+        </div>
+      </div>
 
       <main>
         <section className="section-soft">
@@ -407,7 +414,9 @@ export default function Home() {
 
             {vipProject ? (
               <div className="card mt-6 flex items-start gap-4 border-l-4 border-red-500 p-6">
-                <div className="text-3xl">🏛️</div>
+                <div className="rounded-full bg-red-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-red-500">
+                  VIP
+                </div>
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-red-500">
                     Government Recognition
