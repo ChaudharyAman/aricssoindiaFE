@@ -56,8 +56,8 @@ export default function DeputyCMTag() {
             </div>
 
             <p className="mt-3 font-heading text-xl font-bold leading-snug text-brand-dark sm:text-2xl">
-              Pump House Automation at Moolchand Underpass visited by the Delhi
-              Deputy CM Sh. Parvesh Verma
+              Delhi Deputy CM Sh. Parvesh Verma visited the Pump House Automation
+              at Moolchand Underpass
             </p>
             <p className="mt-2 text-sm font-medium text-brand-body sm:text-base">
               {project.name}, {project.location}
@@ -111,8 +111,8 @@ export default function DeputyCMTag() {
                   </button>
                 </div>
                 <h2 className="mt-3 font-heading text-xl font-bold leading-snug text-amber-900">
-                  Pump House Automation at Moolchand Underpass visited by the Delhi
-                  Deputy CM {project.vipVisit.person}
+                  Delhi Deputy CM {project.vipVisit.person} visited the Pump House
+                  Automation at Moolchand Underpass
                 </h2>
               </div>
 
