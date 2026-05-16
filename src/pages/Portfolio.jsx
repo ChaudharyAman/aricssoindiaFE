@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import PageHero from '../components/PageHero'
 import PageMeta from '../components/PageMeta'
-import WorkOrdersTable from '../components/WorkOrdersTable'
 import {
   portfolioSites,
   scadaReferences,
   serviceImages,
-  workOrders,
 } from '../data/siteData'
 
 export default function Portfolio() {
@@ -201,17 +199,6 @@ export default function Portfolio() {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-white">
-          <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
-            <h2 className="section-heading text-4xl md:text-5xl">
-              Summary of Work Orders
-            </h2>
-            <div className="mt-10">
-              <WorkOrdersTable orders={workOrders} />
             </div>
           </div>
         </section>
