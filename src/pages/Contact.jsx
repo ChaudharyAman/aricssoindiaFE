@@ -30,7 +30,7 @@ export default function Contact() {
               <ContactInfoCard
                 icon={Phone}
                 title="Phone"
-                lines={[company.phone2, company.phone1, company.phone3]}
+                lines={[company.phone1, company.phone2, company.phone3]}
               />
               <ContactInfoCard
                 icon={Mail}
@@ -40,10 +40,7 @@ export default function Contact() {
               <ContactInfoCard
                 icon={MapPin}
                 title="Office"
-                lines={[
-                  'Basement of O 79-A, M3M Smart Word',
-                  'Sector 89, Gurugram, Haryana 122004',
-                ]}
+                lines={company.addressLines}
               />
               <ContactInfoCard
                 icon={Globe}

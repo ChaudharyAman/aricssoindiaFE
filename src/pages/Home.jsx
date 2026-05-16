@@ -451,14 +451,14 @@ export default function Home() {
               <InfoCard
                 icon={Phone}
                 title="Phone"
-                lines={[company.phone2, company.phone1, company.phone3]}
+                lines={[company.phone1, company.phone2, company.phone3]}
               />
               <InfoCard
                 icon={Mail}
                 title="Email"
                 lines={[company.email1, company.email2]}
               />
-              <InfoCard icon={MapPin} title="Address" lines={[company.shortAddress]} />
+              <InfoCard icon={MapPin} title="Address" lines={company.addressLines} />
             </div>
           </div>
         </section>
