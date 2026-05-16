@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PageHero from '../components/PageHero'
 import PageMeta from '../components/PageMeta'
 import WorkOrdersTable from '../components/WorkOrdersTable'
@@ -10,6 +11,24 @@ import {
 
 export default function Portfolio() {
   const featuredProject = portfolioSites[0]
+  const vipProject = portfolioSites.find((site) => site.vipVisit)
+  const vipImages = [
+    {
+      src: '/images/moolchand-visit-1.jpeg',
+      alt: 'Deputy CM visit - Storm Water Automation SCADA',
+      fallback: 'Add public/images/moolchand-visit-1.jpg',
+    },
+    {
+      src: '/images/moolchand-visit-2.jpeg',
+      alt: 'Storm Water Automation SCADA screen',
+      fallback: 'Add public/images/moolchand-visit-2.jpg',
+    },
+    {
+      src: '/images/moolchand-scada.jpeg',
+      alt: 'Moolchand Underpass SCADA - 8 pump system',
+      fallback: 'Add public/images/moolchand-scada.jpg',
+    },
+  ]
 
   return (
     <>
@@ -69,6 +88,39 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        {vipProject ? (
+          <section className="section-teal">
+            <div className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+              <div className="card card-accent p-8">
+                <span className="badge bg-red-100 text-red-600">🏛️ Government Recognition</span>
+                <h2 className="mt-5 section-heading text-4xl md:text-5xl">
+                  Visited by Delhi Deputy CM — Moolchand Underpass
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-brand-body">
+                  Our Storm Water Automation system at Moolchand Underpass, New Delhi
+                  was personally inspected by <strong>{vipProject.vipVisit.person}</strong>,
+                  <strong> {vipProject.vipVisit.title}</strong> in {vipProject.vipVisit.date}
+                  , validating our real-time SCADA control system managing 8 pumps
+                  across 4 underground tanks for the Storm & Sewage Water Pipeline.
+                </p>
+                <p className="mt-4 text-base leading-8 text-brand-body">
+                  {vipProject.scadaDetails}
+                </p>
+                <div className="mt-8 grid gap-4 md:grid-cols-3">
+                  {vipImages.map((image) => (
+                    <PortfolioImage
+                      key={image.src}
+                      src={image.src}
+                      alt={image.alt}
+                      fallback={image.fallback}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="section-white">
           <div className="mx-auto max-w-7xl px-4 pb-20 lg:px-8">
@@ -165,6 +217,27 @@ export default function Portfolio() {
         </section>
       </main>
     </>
+  )
+}
+
+function PortfolioImage({ src, alt, fallback }) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed) {
+    return (
+      <div className="flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-brand-border bg-white p-4 text-center text-sm text-brand-body">
+        {fallback}
+      </div>
+    )
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="aspect-[4/3] w-full rounded-xl object-cover"
+      onError={() => setFailed(true)}
+    />
   )
 }
 

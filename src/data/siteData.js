@@ -419,7 +419,17 @@ export const portfolioSites = [
   {
     name: 'Moolchand Underpass',
     location: 'New Delhi',
-    type: 'Storm Water / Underpass Pump House Automation',
+    type: 'Storm Water / Underpass Pump House Automation — Storm & Sewage Water Pipeline',
+    highlight: true,
+    vipVisit: {
+      person: 'Sh. Parvesh Verma',
+      title: 'Deputy Chief Minister, Delhi',
+      date: 'February 2025',
+      description:
+        'Our Storm Water Automation system at Moolchand Underpass was inspected by Delhi Deputy Chief Minister Sh. Parvesh Verma, demonstrating real-time SCADA control of 8 pumps across 4 underground tanks.',
+    },
+    scadaDetails:
+      'Storm & Sewage Water Pipeline — Moolchand Underpass. 8 pumps (20HP & 25HP), 4 UG Tanks with HIGH/LOW indicators, real-time I Line and V Phase display.',
   },
   {
     name: 'Shastri Bhavan',
@@ -763,4 +773,3 @@ export const whyChooseUs = [
     icon: 'MapPin',
   },
 ]
-

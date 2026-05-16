@@ -87,6 +87,8 @@ const infrastructureGallery = [
 ]
 
 export default function Home() {
+  const vipProject = portfolioSites.find((site) => site.vipVisit)
+
   return (
     <>
       <PageMeta
@@ -402,6 +404,32 @@ export default function Home() {
                 <ArrowRight size={16} />
               </Link>
             </div>
+
+            {vipProject ? (
+              <div className="card mt-6 flex items-start gap-4 border-l-4 border-red-500 p-6">
+                <div className="text-3xl">🏛️</div>
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-red-500">
+                    Government Recognition
+                  </span>
+                  <h3 className="mt-1 font-heading text-2xl font-bold text-brand-dark">
+                    Delhi Deputy CM visited Moolchand Underpass
+                  </h3>
+                  <p className="mt-2 text-sm text-brand-body">
+                    {vipProject.vipVisit.person}, {vipProject.vipVisit.title}, personally
+                    inspected our Storm Water Automation SCADA system in{' '}
+                    {vipProject.vipVisit.date}.
+                  </p>
+                  <Link
+                    to="/portfolio"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-teal"
+                  >
+                    View Project
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            ) : null}
 
             <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {portfolioSites.slice(1).map((site) => (
