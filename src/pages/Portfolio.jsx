@@ -49,7 +49,8 @@ export default function Portfolio() {
               <div className="card card-accent p-8">
                 <span className="badge bg-red-100 text-red-600">🏛️ Government Recognition</span>
                 <h2 className="mt-5 section-heading text-4xl md:text-5xl">
-                  Visited by Delhi Deputy CM — Moolchand Underpass
+                  Pump House Automation at Moolchand Underpass visited by the Delhi
+                  Deputy CM Sh. Parvesh Verma
                 </h2>
                 <p className="mt-4 text-lg leading-8 text-brand-body">
                   Our Storm Water Automation system at Moolchand Underpass, New Delhi

@@ -422,7 +422,8 @@ export default function Home() {
                     Government Recognition
                   </span>
                   <h3 className="mt-1 font-heading text-2xl font-bold text-brand-dark">
-                    Delhi Deputy CM visited Moolchand Underpass
+                    Pump House Automation at Moolchand Underpass visited by the
+                    Delhi Deputy CM Sh. Parvesh Verma
                   </h3>
                   <p className="mt-2 text-sm text-brand-body">
                     {vipProject.vipVisit.person}, {vipProject.vipVisit.title}, personally
